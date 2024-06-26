@@ -1,10 +1,25 @@
 import '../style/style.scss'
 import Logementsitems from './LogementsItems'
-import { logements } from '../assets/data/logements'
+import React, { useEffect, useState } from 'react';
 
-function LogementList() {
-    return (
-        <div className='kasa-logement'> 
+const LogementList = () => {
+  const [logements, setLogements] = useState([]);
+  
+
+  useEffect(() => {
+    fetch('/logements.json')
+      .then((response) => {
+        
+        return response.json();
+      })
+      .then((data) => {
+        setLogements(data);
+      })
+
+  }, []);
+
+  return (
+    <div className='kasa-logement'> 
         <ul className='kasa-logement-list'>
             {logements.map(({ id, cover, title }) => (
                 <Logementsitems
@@ -14,8 +29,8 @@ function LogementList() {
                 />
             ))}
         </ul>
-        </div>
-    )
-}
+    </div>
+  );
+};
 
-export default LogementList
+export default LogementList;
