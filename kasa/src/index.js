@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Propos from './pages/About'
-import Error from './components/Error'
+import About from './pages/About'
+import Error from './pages/Error'
 import PageLogement from './pages/PageLogement'
 
 
@@ -14,7 +14,7 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/a_propos" element={<Propos />} />
+        <Route path="/a_propos" element={<About />} />
         <Route path='*' element={<Error />} />
         <Route path="/logement/:id" element={<PageLogement />} />
       </Routes>

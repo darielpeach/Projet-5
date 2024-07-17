@@ -1,11 +1,24 @@
 import '../style/style.scss'
-import banner from '../assets/Mask Group.png'
+import React from 'react'
+import { useLocation } from 'react-router-dom'
 
-function Banner() {
+
+function Banner({ imageSrc, altText, text }) {
+    const location = useLocation()
+
+    let bannerImgClass = 'banner-img'
+    //Condition pour ajuster l'image correctement en fonction de la page
+    if (location.pathname === '/a_propos') {
+        bannerImgClass = 'banner-img-about'
+    } else {
+        bannerImgClass = 'banner-img'
+    }
     return (
-        <div>
-            <img src={banner} alt='bannière paysage' className='banner'/>
-            <p className='banner-txt'>Chez vous, partout et ailleurs</p>
+        <div className='banner'>
+            <div className='banner-container'>
+                <img src={imageSrc} alt={altText} className={bannerImgClass}/>
+                {text && <p className='banner-txt'>{text}</p>}
+            </div>
         </div>
     )
 }

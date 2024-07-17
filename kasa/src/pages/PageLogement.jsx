@@ -1,95 +1,65 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import '../style/style.scss'
 import '../components/Dropdown.jsx'
 import Dropdown from '../components/Dropdown.jsx';
 import Rating from '../components/rating.jsx'
+import Carrousel from '../components/Carrousel.jsx'
 
 const PageLogement = () => {
   const { id } = useParams();
   const [logement, setLogement] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`/logements.json`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
+    fetch('/logements.json')
+      .then((response) => response.json())
       .then((data) => {
-        const logementDetail = data.find((log) => log.id.toString() === id);
-        setLogement(logementDetail);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error.message);
-        setLoading(false);
+        const foundLogement = data.find((log) => log.id === id);
+        if (!foundLogement) {
+          navigate('*');
+        } else {
+          setLogement(foundLogement);
+        }
       });
-  }, [id]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  }, [id, navigate]);
 
   if (!logement) {
-    return <div>Logement non trouvé</div>;
-  }
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === logement.pictures.length - 1 ? 0 : prevIndex + 1
-    );
-  }
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === logement.pictures.length - 1 ? 0 : prevIndex + 1
-  );
+    return <div>Loading...</div>;
   }
 
   return (
     <div>
       <Header />
-      <div className='carousel'>
-        <button onClick={handlePrev}>Précédent</button>
-        <img src={logement.pictures[currentIndex]} className='carouselImg' alt={`${currentIndex + 1}`} />
-        <button onClick={handleNext}>Suivant</button>
-      </div>
-      <div className='logementHost'>
+      <Carrousel images={logement.pictures} />
+      <div className='logement-host'>
         <div>
-            <h1 className='titrePageLogement'>{logement.title}</h1>
+            <h1 className='titre-page-logement'>{logement.title}</h1>
             <p>{logement.location}</p>
-          <div>
+          <div className='tags-container'>
             {logement.tags.map((tag, index) => (
-              <span key={index} className="tagsLogements">{tag}</span>
+              <span key={index} className="tags-logements">{tag}</span>
             ))}
           </div>
         </div>
-        <p className='hostName'>{logement.host.name}</p>
-        <div>
-          <img src={logement.host.picture}  alt={`Photo de ${logement.host.name}`} className='hostImg'/>
+        
+        <div className='host-container'>
+          <p className='host-name'>{logement.host.name}</p>
+          <img src={logement.host.picture}  alt={`${logement.host.name}`} className='host-img'/>
           <Rating rating={logement.rating} />
         </div>
       </div>
       
-      <div className='dropdownList'>
+      <div className='dropdown-list'>
         <Dropdown title="Description" content={logement.description} />
         <Dropdown title="Équipements" content={logement.equipments} />
       </div>
       <Footer />
     </div>
+
   );
 };
-
 
 export default PageLogement
