@@ -1,0 +1,396 @@
+$kasa-orange: #FF6060;
+
+
+.nav-link-header {
+    margin: 5px;
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+.nav-link-header-selected {
+    text-decoration: underline black;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    margin: 40px;
+    align-items: center;
+    justify-content: space-between;
+    
+    @media (max-width: 500px) {
+        img {
+            width: 40%
+        }
+    }
+}
+
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.banner-container {
+    margin: 20px;
+    height: 223px;
+    width: 1230px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner-img {
+    position: absolute;
+    transform: scale(0.488);
+    filter: brightness(50%);
+    top: -1900px;
+    left: -800px;
+
+    @media (max-width: 788px) {
+        left: -1050px;
+    }
+    
+}
+
+.banner-img-about {
+    position: absolute;
+    transform: scale(0.3);
+    top: -1250px;
+    left: -1435px;
+}
+
+.banner-txt {
+    position: absolute;
+    top: 30px;
+    left: 25%;
+    font-size: 50px;
+    color: white;
+
+    @media (max-width: 730px) {
+        left: 3%;
+        font-size: 40px;
+    }
+}
+
+.kasa-logement-item:hover {
+        transform: scale(1.1);
+    }
+
+.kasa-logement {
+    display: flex;
+    justify-content: center;
+    @media (max-width: 420px) {
+      width: 96%;
+        
+    }
+    
+
+    .kasa-logement-list {
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: 1100px;
+        justify-content: center;
+        background-color: rgb(240, 230, 230);
+        border-radius: 30px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-right: 30px;
+
+        @media (max-width: 788px) {
+            background: none;
+            width: 90%;
+        }
+        
+        .kasa-logement-item {
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            text-transform: capitalize;
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            width: 310px;
+            height: 310px;
+            font-weight: bold;
+            @media (max-width: 420px) {
+                width: fit-content;
+        
+            }
+            
+            
+            
+            .kasa-logement-item-cover {
+                height: 310px;
+                width: 310px; 
+                border-radius: 20px; 
+            }
+            .kasa-logement-title {
+                    position: relative;
+                    bottom: 60px;
+                    left: 7px;
+                    
+                }    
+        }
+    } 
+}
+
+
+
+
+.footer {
+    display: flex;
+    background-color: black;
+    color: white;
+    padding: 30px;
+    justify-content: center;
+    margin-left: -3%;
+    position: relative;
+    right: -8px;
+    bottom: -8px;
+
+    @media (max-width: 540px) {
+        margin-left: -5%;
+    }
+    .footer-items {
+        margin-left: 22%;
+    }
+    
+}
+
+.carrousel {
+    display: flex;
+    justify-content: center;
+}
+.carrousel-img {
+    height: 415px;
+    width: 90vw;
+    border-radius: 20px;
+}
+
+.carrousel-counter {
+    position: absolute;
+    top: 520px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    font-size: 25px;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.carrousel-btn {
+    color: white;
+    border: none;
+    background: none;
+    font-size: 50px;
+    position: absolute;
+    top: 320px;
+    cursor: pointer;
+}
+
+.carrousel-btn-left {
+    left: 6%  
+}
+
+.carrousel-btn-right {
+    right: 6%;
+}
+
+.logement-host {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5vw;
+    margin-right: 2vw;
+    @media (max-width: 1000px) {
+        flex-direction: column;
+    }
+}
+
+
+.titre-page-logement {
+    color: $kasa-orange;
+    font-weight: lighter;
+}
+
+.tags-container {
+    @media (max-width: 700px) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+.tags-logements {
+    background-color: $kasa-orange;
+    border-radius: 10px;
+    color: white;
+    margin-right: 15px;
+    padding: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    
+}
+
+.host-container {
+    @media (max-width: 1000px) {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+.rating {
+    font-size: 30px;
+    position: absolute;
+    right: 6%;
+
+    @media (max-width: 1000px) {
+        position: initial;
+        font-size: 25px;  
+    }
+}
+
+
+.kasa-star {
+    color: $kasa-orange
+}
+
+.grey-star {
+    color: grey;
+}
+
+.host-name {
+    position: absolute;
+    color: $kasa-orange;
+    right: 180px;
+   @media (max-width: 1000px) {
+    right: 5.5em; 
+    }
+}
+
+.host-img {
+    margin-top: 10px;
+    border-radius: 80px;
+    height: 50%;
+    @media (max-width: 1000px) {
+        position: absolute;
+        height: 40px;
+       right: 5%;
+    }
+}
+
+.dropdown {
+    color: white;
+    width: 45%;
+    font-size: 17px;
+    font-weight: bold;
+    @media (max-width: 1000px) {
+        width: 100%;
+    }
+}
+
+.dropdown-title  {
+    background-color: $kasa-orange;
+    border-radius: 5px;
+    padding: 10px;
+}
+.dropdown-toggle {
+    position :relative;
+    bottom: 32px;
+    left: 92%;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: white;
+    @media (max-width: 460px) {
+        left: 87%
+    }
+}
+
+.dropdown-icon {
+    transition: transform 0.5s ease-in-out;
+}
+
+.dropdown-icon.open {
+    transform: rotate(-180deg)
+}
+.dropdown-list {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 20px;
+
+    @media (max-width: 1000px) {
+        flex-direction: column;
+    }
+}
+
+.dropdown-content {
+    background-color: white;
+    color: black;
+    font-weight: lighter;
+    padding: 20px;
+    margin-top: -20px;
+    padding-top: 0;
+}
+
+.dropdown-about  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+    margin-top: 10px;
+    .dropdown {
+        width: 70%;
+        @media (max-width: 850px) {
+            width: 85%;
+        }
+        .dropdown-toggle {
+            left: 95%;
+            @media (max-width: 850px) {
+                left: 87%;
+            }
+        }
+    }
+}
+
+.page-error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px;
+    margin-bottom: 80px;
+    max-width: 80%;
+    margin-left: 10%;
+
+  
+        
+ 
+
+    @media (max-width: 900px) {
+        img {
+            width: 70%;
+        }
+    }
+    
+    a:visited {
+        color: black;
+    }
+    .margin-error-element {
+        margin-bottom: 70px;
+    }
+
+    .error-title {
+        color: $kasa-orange;
+        text-align: center;     
+    }
+}
+
