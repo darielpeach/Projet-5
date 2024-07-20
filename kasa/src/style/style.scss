@@ -181,6 +181,10 @@ $kasa-orange: #FF6060;
     color: white;
     padding: 5px 10px;
     border-radius: 5px;
+
+    @media (max-width: 500px) {
+        top: 490px;
+    }
 }
 
 .carrousel-btn {
@@ -346,7 +350,7 @@ $kasa-orange: #FF6060;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 80px;
     margin-top: 10px;
     .dropdown {
         width: 70%;
